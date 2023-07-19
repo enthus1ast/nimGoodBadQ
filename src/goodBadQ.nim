@@ -32,7 +32,7 @@ template withq*[T](dq: var Deque[T], body: untyped) =
   let curlen = dq.len
   for idx in 0 ..< curlen:
     choiceThisRound = false
-    let itm {.inject.} = dd[idx]
+    let itm {.inject.} = dq[idx]
     body
     # try:
     #   body
