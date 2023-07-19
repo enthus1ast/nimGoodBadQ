@@ -7,6 +7,17 @@
 ## if itm.good is called the item is removed from the queue
 ## if itm.bad is called the item is requeued on the end, but is not iterated over again in this call
 import deques
+export deques
+
+type
+  GoodBadQ*[T] = Deque[T]
+
+proc add*[T](dq: var GoodBadQ[T], itm: T) =
+  dq.addLast(itm)
+
+
+proc newGoodBadQ*[T](): GoodBadQ[T] =
+  result = GoodBadQ[T]
 
 template withq*[T](dq: var Deque[T], body: untyped) =
   var goods: seq[T]
